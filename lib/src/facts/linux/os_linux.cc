@@ -55,7 +55,8 @@ namespace facter { namespace facts { namespace linux {
         }
 
         if (is_regular_file(release_file::debian, ec)) {
-            if (distro_id == os::ubuntu || distro_id == os::linux_mint) {
+            if (distro_id == os::ubuntu || distro_id == os::linux_mint ||
+                distro_id == os::astra_linux_ce || distro_id == os::astra_linux_se) {
                 return distro_id;
             }
             return os::debian;
@@ -237,6 +238,8 @@ namespace facter { namespace facts { namespace linux {
             { string(os::huawei),                   string(os_family::debian) },
             { string(os::linux_mint),               string(os_family::debian) },
             { string(os::ubuntu),                   string(os_family::debian) },
+            { string(os::astra_linux_ce),           string(os_family::debian) },
+            { string(os::astra_linux_se),           string(os_family::debian) },
             { string(os::debian),                   string(os_family::debian) },
             { string(os::devuan),                   string(os_family::debian) },
             { string(os::suse_enterprise_server),   string(os_family::suse) },
@@ -358,7 +361,7 @@ namespace facter { namespace facts { namespace linux {
         if (value.empty()) {
             const char* file = nullptr;
             boost::regex pattern;
-            if (name == os::ubuntu) {
+            if (name == os::ubuntu || name == os::astra_linux_ce || name == os::astra_linux_se) {
                 file = release_file::lsb;
                 pattern = "(?m)^DISTRIB_RELEASE=(\\d+\\.\\d+)(?:\\.\\d+)*";
             } else if (name == os::slackware) {

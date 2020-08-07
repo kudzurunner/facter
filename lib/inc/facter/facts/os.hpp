@@ -205,6 +205,14 @@ namespace facter { namespace facts {
         * The PhotonOS operating system.
         */
         constexpr static char const* photon_os = "PhotonOS";
+        /**
+         * The Astra Linux Common Edition operating system.
+         */
+        constexpr static char const* astra_linux_ce = "AstraLinuxCE";
+        /**
+         * The Astra Linux Special Edition operating system.
+         */
+        constexpr static char const* astra_linux_se = "AstraLinuxSE";
     };
 
 }}
