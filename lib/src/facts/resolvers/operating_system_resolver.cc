@@ -292,7 +292,7 @@ namespace facter { namespace facts { namespace resolvers {
         // This implementation couples all known formats for lsb_dist and the Linux release versions. If that
         // coupling becomes a problem, we'll probably need to push parsing distro major/minor to inheriting resolvers,
         // as we've done for parsing the release version.
-        if (name != os::ubuntu) {
+        if (name != os::ubuntu && name != os::astra_linux_ce && name != os::astra_linux_se) {
             auto pos = release.find('.');
             if (pos != string::npos) {
                 auto second = release.find('.', pos + 1);

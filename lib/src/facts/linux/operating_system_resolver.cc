@@ -159,7 +159,9 @@ namespace facter { namespace facts { namespace linux {
              result.name == os::linux_mint ||
              result.name == os::gentoo ||
              result.name == os::kfreebsd ||
-             result.name == os::ubuntu)) {
+             result.name == os::ubuntu ||
+             result.name == os::astra_linux_ce ||
+             result.name == os::astra_linux_se)) {
             result.architecture = "amd64";
         } else if (re_search(result.architecture, boost::regex("i[3456]86|pentium"))) {
             // For 32-bit, use "x86" for Gentoo and "i386" for everyone else
