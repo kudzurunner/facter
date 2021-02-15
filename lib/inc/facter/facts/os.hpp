@@ -206,13 +206,9 @@ namespace facter { namespace facts {
         */
         constexpr static char const* photon_os = "PhotonOS";
         /**
-         * The Astra Linux Common Edition operating system.
+         * The Astra Linux operating system.
          */
-        constexpr static char const* astra_linux_ce = "AstraLinuxCE";
-        /**
-         * The Astra Linux Special Edition operating system.
-         */
-        constexpr static char const* astra_linux_se = "AstraLinuxSE";
+        constexpr static char const* astra_linux = "AstraLinux";
     };
 
 }}

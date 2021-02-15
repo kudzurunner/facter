@@ -54,9 +54,12 @@ namespace facter { namespace facts { namespace linux {
           return os::devuan;
         }
 
+        if (is_regular_file(release_file::astra_linux, ec)) {
+          return os::astra_linux;
+        }
+
         if (is_regular_file(release_file::debian, ec)) {
-            if (distro_id == os::ubuntu || distro_id == os::linux_mint ||
-                distro_id == os::astra_linux_ce || distro_id == os::astra_linux_se) {
+            if (distro_id == os::ubuntu || distro_id == os::linux_mint) {
                 return distro_id;
             }
             return os::debian;
@@ -238,8 +241,7 @@ namespace facter { namespace facts { namespace linux {
             { string(os::huawei),                   string(os_family::debian) },
             { string(os::linux_mint),               string(os_family::debian) },
             { string(os::ubuntu),                   string(os_family::debian) },
-            { string(os::astra_linux_ce),           string(os_family::debian) },
-            { string(os::astra_linux_se),           string(os_family::debian) },
+            { string(os::astra_linux),              string(os_family::debian) },
             { string(os::debian),                   string(os_family::debian) },
             { string(os::devuan),                   string(os_family::debian) },
             { string(os::suse_enterprise_server),   string(os_family::suse) },
@@ -303,6 +305,12 @@ namespace facter { namespace facts { namespace linux {
             }
         }
 
+        // Astra Linux uses the entire contents of the release file as the version
+        if (value.empty() && name == os::astra_linux) {
+            value = lth_file::read(release_file::astra_linux);
+            boost::trim_right(value);
+        }
+
         // Debian uses the entire contents of the release file as the version
         if (value.empty() && name == os::debian) {
             value = lth_file::read(release_file::debian);
@@ -361,7 +369,7 @@ namespace facter { namespace facts { namespace linux {
         if (value.empty()) {
             const char* file = nullptr;
             boost::regex pattern;
-            if (name == os::ubuntu || name == os::astra_linux_ce || name == os::astra_linux_se) {
+            if (name == os::ubuntu || name == os::astra_linux) {
                 file = release_file::lsb;
                 pattern = "(?m)^DISTRIB_RELEASE=(\\d+\\.\\d+)(?:\\.\\d+)*";
             } else if (name == os::slackware) {

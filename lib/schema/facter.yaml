@@ -36,7 +36,7 @@ architecture:
         POSIX platforms: use the `uname` function to retrieve the OS hardware architecture.
         Windows: use the `GetNativeSystemInfo` function to retrieve the OS hardware architecture.
     caveats: |
-        Linux: Debian, Gentoo, kFreeBSD, AstraLinux, and Ubuntu use "amd64" for "x86_64" and Gentoo uses "x86" for "i386".
+        Linux: Debian, Gentoo, kFreeBSD, AstraLinux and Ubuntu use "amd64" for "x86_64" and Gentoo uses "x86" for "i386".
 
 augeas:
     type: map
@@ -1084,7 +1084,7 @@ operatingsystemmajrelease:
         Solaris: parse the contents of `/etc/release` to retrieve the OS major release.
         Windows: use WMI to retrieve the OS major release.
     caveats: |
-        Linux: for Ubuntu and AstraLinux, the major release is X.Y, such as "10.4".
+        Linux: for Ubuntu and AstraLinux, the major release is X.Y, such as "10.4"/"1.7".
 
 operatingsystemrelease:
     type: string

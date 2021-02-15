@@ -31,7 +31,7 @@ namespace facter { namespace facts { namespace linux {
         auto release_info = os_linux::key_value_file(release_file::os, {"ID", "CISCO_RELEASE_INFO"});
         auto const& id = release_info["ID"];
         if (id == "coreos" || id == "cumulus-linux" || id == "opensuse" ||
-            id == "opensuse-leap" || id== "sled" || id == "sles" || id == "ubuntu") {
+            id == "opensuse-leap" || id== "sled" || id == "sles" || id == "ubuntu" || id == "astra") {
             return unique_ptr<os_linux>(new os_osrelease());
         } else {
             auto const& cisco = release_info["CISCO_RELEASE_INFO"];
@@ -160,8 +160,7 @@ namespace facter { namespace facts { namespace linux {
              result.name == os::gentoo ||
              result.name == os::kfreebsd ||
              result.name == os::ubuntu ||
-             result.name == os::astra_linux_ce ||
-             result.name == os::astra_linux_se)) {
+             result.name == os::astra_linux)) {
             result.architecture = "amd64";
         } else if (re_search(result.architecture, boost::regex("i[3456]86|pentium"))) {
             // For 32-bit, use "x86" for Gentoo and "i386" for everyone else

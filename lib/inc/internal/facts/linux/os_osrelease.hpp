@@ -47,6 +47,8 @@ namespace facter { namespace facts { namespace linux {
                     return os::suse_enterprise_server;
                 } else if (id == "ubuntu") {
                     return os::ubuntu;
+                } else if (id == "astra") {
+                    return os::astra_linux;
                 }
             }
             return std::string();
@@ -71,6 +73,8 @@ namespace facter { namespace facts { namespace linux {
                 } else if (id == "opensuse" || id == "opensuse-leap" || id == "sled" || id == "sles") {
                     return os_family::suse;
                 } else if (id == "ubuntu") {
+                    return os_family::debian;
+                } else if (id == "astra") {
                     return os_family::debian;
                 }
             }
